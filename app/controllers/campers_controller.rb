@@ -8,7 +8,7 @@ end
 
 def show
   if @camper
-    render json: @camper, include: [:activites]
+    render json: @camper, serializer: CamperActivitySerializer
   else
     render_not_found
   end
@@ -19,7 +19,7 @@ def create
   if @camper.save
     render json: @camper, status: :created
   else
-    render json: { errors: "validation errors"}, status: 422
+    render json: { errors: ["validation errors"]}, status: 422
   end
 end
   private

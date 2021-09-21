@@ -3,7 +3,7 @@ class SignupsController < ApplicationController
   def create
     @signup = Signup.new(signup_params)
     if @signup.save
-      render json: @signup, :include => [:activity], status: :created
+      render json: @signup.activity, status: :created
     else
       render json: {"errors": ["validation errors"]}, status: 422
     end
